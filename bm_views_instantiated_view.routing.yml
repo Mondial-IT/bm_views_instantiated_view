@@ -1,0 +1,39 @@
+# display the list of views
+bm_viv.admin.list:
+  path: '/admin/structure/bm-instantiated-views'
+  defaults:
+    _controller: '\Drupal\bm_views_instantiated_view\Controller\AdminController::list'
+    _title: 'Instantiated Views'
+  requirements:
+    _permission: 'administer instantiated views'
+# display selected view sql
+bm_viv.admin.show_sql:
+  path: '/admin/structure/bm-instantiated-views/{db_view}/sql'
+  defaults:
+    _controller: '\Drupal\bm_views_instantiated_view\Controller\AdminController::showSql'
+    _title_callback: '\Drupal\bm_views_instantiated_view\Controller\AdminController::titleSql'
+  requirements:
+    _permission: 'administer instantiated views'
+# preview the selected view
+bm_viv.admin.preview:
+  path: '/admin/structure/bm-instantiated-views/{db_view}/preview'
+  defaults:
+    _controller: '\Drupal\bm_views_instantiated_view\Controller\AdminController::preview'
+    _title: 'Preview rows'
+  requirements:
+    _permission: 'administer instantiated views'
+# delete the selected view
+bm_viv.admin.delete:
+  path: '/admin/structure/bm-instantiated-views/{db_view}/delete'
+  defaults:
+    _controller: '\Drupal\bm_views_instantiated_view\Controller\AdminController::delete'
+  requirements:
+    _permission: 'administer instantiated views'
+# rename the selected view
+bm_viv.admin.rename:
+  path: '/admin/structure/bm-instantiated-views/{db_view}/rename'
+  defaults:
+    _form: '\Drupal\bm_views_instantiated_view\Form\RenameForm'
+    _title: 'Rename MySQL VIEW'
+  requirements:
+    _permission: 'administer instantiated views'

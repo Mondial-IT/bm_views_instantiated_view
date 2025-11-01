@@ -1,0 +1,8 @@
+name: 'BM Views Instantiated View'
+type: module
+description: 'Instantiate a Drupal Views display as a real MySQL VIEW and expose it back to Views.'
+core_version_requirement: ^11
+package: 'Blue Marloc'
+php: 8.3
+dependencies:
+  - drupal:views

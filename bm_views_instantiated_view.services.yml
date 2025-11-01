@@ -1,0 +1,7 @@
+services:
+  bm_viv.instantiator:
+    class: Drupal\bm_views_instantiated_view\Service\Instantiator
+    arguments: ['@database', '@string_translation', '@logger.channel.bm_viv', '@messenger','@cache.discovery']
+  logger.channel.bm_viv:
+    parent: logger.channel_base
+    arguments: ['bm_viv']

@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * @file
+ * Minimal hooks to expose instantiated MySQL VIEWs back to Views.
+ */
+
+use Drupal\bm_views_instantiated_view\Entity\InstantiatedView;
+
+/**
+ * Implements hook_views_data().
+ *
+ * For each db view tracked in config, expose as a Views base table using
+ * introspected columns. This makes the MySQL VIEW selectable inside Views.
+ */
+function bm_views_instantiated_view_views_data(): array {
+  $data = [];
+
+  $storage = \Drupal::entityTypeManager()->getStorage('bm_viv');
+  /** @var \Drupal\bm_views_instantiated_view\Entity\InstantiatedView[] $items */
+  $items = $storage->loadMultiple();
+
+  $instantiator = \Drupal::service('bm_viv.instantiator');
+
+  foreach ($items as $item) {
+    $table = $item->db_view_name;
+    $columns = $instantiator->columns($table);
+
+    if (empty($columns)) {
+      continue;
+    }
+
+    $data[$table]['table'] = [
+      'group' => t('Instantiated MySQL Views'),
+      'base' => [
+        'field' => $columns[0]['COLUMN_NAME'], // Fallback primary field
+        'title' => $item->label,
+        'help' => t('MySQL VIEW instantiated from @view:@display.', ['@view' => $item->view_id, '@display' => $item->display_id]),
+      ],
+    ];
+
+    foreach ($columns as $col) {
+      $name = $col['COLUMN_NAME'];
+      $data[$table][$name] = [
+        'title' => $name,
+        'help' => t('Column @c', ['@c' => $name]),
+        'field' => ['id' => 'standard'],
+        'filter' => ['id' => 'string'],
+        'sort' => ['id' => 'standard'],
+      ];
+    }
+  }
+
+  return $data;
+}

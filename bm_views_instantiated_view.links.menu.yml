@@ -1,0 +1,6 @@
+bm_viv.admin.list:
+  title: 'Instantiated Views'
+  description: 'Manage MySQL views created from Drupal Views.'
+  route_name: bm_viv.admin.list
+  parent: system.admin_structure
+  weight: 50

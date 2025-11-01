@@ -1,0 +1,4 @@
+administer instantiated views:
+  title: 'Administer instantiated views'
+  description: 'Create, drop, rename, and inspect MySQL views instantiated from Drupal Views.'
+  restrict access: true
