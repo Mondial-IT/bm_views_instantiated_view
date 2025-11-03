@@ -4,8 +4,9 @@ namespace Drupal\bm_views_instantiated_view\Service;
 
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Database\Query\SelectInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\StringTranslation\TranslationInterface;
-use Drupal\pathauto\MessengerInterface;
+
 use Psr\Log\LoggerInterface;
 use Drupal\views\Views;
 use Drupal\Component\Utility\Html;
@@ -168,8 +169,7 @@ class Instantiator {
     $select = $this->db->select($db_view, 'v')
       ->fields('v')
       ->range(0, (int) $limit);
-
-    return $select->execute()->fetchAllAssoc(NULL, \PDO::FETCH_ASSOC);
+    return $select->execute()->fetchAll( \PDO::FETCH_ASSOC);
 
   }
 
@@ -202,6 +202,6 @@ class Instantiator {
               FROM INFORMATION_SCHEMA.COLUMNS
              WHERE TABLE_SCHEMA = :s AND TABLE_NAME = :t
              ORDER BY ORDINAL_POSITION";
-    return $this->db->query($sql, [':s' => $schema, ':t' => $db_view])->fetchAllAssoc(NULL, \PDO::FETCH_ASSOC);
+    return $this->db->query($sql, [':s' => $schema, ':t' => $db_view])->fetchAll( \PDO::FETCH_ASSOC);
   }
 }

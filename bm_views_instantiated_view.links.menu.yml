@@ -4,3 +4,10 @@ bm_viv.admin.list:
   route_name: bm_viv.admin.list
   parent: system.admin_structure
   weight: 50
+
+bm_viv.admin.list.bm_menu:
+  title: 'Instantiated Views'
+  description: 'Manage MySQL views created from Drupal Views.'
+  route_name: bm_viv.admin.list
+  parent: bm_main.bluemarloc_developer
+  weight: 50
