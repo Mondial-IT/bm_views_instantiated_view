@@ -1,5 +1,5 @@
 {
-    "name": "bluemarloc/bm_views_instantiated_view",
+    "name": "mondial-it/bm_views_instantiated_view",
     "description": "Blue Marloc module which creates a MySql view from a Drupal Views view display. To be used in Excel and BI flat entities.",
     "type": "drupal-custom-module",
     "version": "1.0.0",
