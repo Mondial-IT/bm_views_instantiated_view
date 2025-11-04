@@ -1,0 +1,26 @@
+{
+    "name": "bluemarloc/bm_views_instantiated_view",
+    "description": "Blue Marloc module which creates a MySql view from a Drupal Views view display. To be used in Excel and BI flat entities.",
+    "type": "drupal-custom-module",
+    "version": "1.0.0",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Blue Marloc",
+            "email": "info@bluemarloc.com"
+        }
+    ],
+    "require": {
+        "drupal/core": "^10.2 || ^11"
+    },
+    "autoload": {
+        "psr-4": {
+            "Drupal\\bm_main\\": "src/"
+        }
+    },
+    "extra": {
+        "drupal": {
+            "package": "Blue Marloc"
+        }
+    }
+}
